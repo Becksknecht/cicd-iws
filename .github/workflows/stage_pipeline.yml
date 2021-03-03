@@ -79,9 +79,19 @@ jobs:
     runs-on: ubuntu-latest
     name: shift static code check
     steps:
-    # Checkout Code like in build step
-    # Install dependencies and application
-    # Run Integrated Security Scan below
+    - uses: actions/checkout@v2
+    - name: Set up Python 3.x
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install flake8
+        pip install -r requirements.txt        
+    - name: Install project
+      run: |
+        pip install -e .
     - name: Perform Scan
       uses: ShiftLeftSecurity/scan-action@master
       env:
