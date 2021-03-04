@@ -2,11 +2,7 @@ from flask import Flask, render_template
 
 from . import prime_cython as pc
 from . import random_name as rn
-import yaml
 
-
-def from_yaml(yaml_str):
-    return yaml.load(yaml_str)
 
 app = Flask(__name__)
 
@@ -18,7 +14,7 @@ def index():
 
 @app.route('/json/')
 def json():
-    return {"hello": "world"}
+    return {"hello": "IWS"}
 
 
 @app.route('/hello/')
